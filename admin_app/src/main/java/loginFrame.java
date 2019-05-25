@@ -107,7 +107,7 @@ public class loginFrame extends javax.swing.JFrame {
         if(passwordField.getText().equals(password)) {
             try {
                 m_connection = DriverManager.getConnection("jdbc:mysql://localhost/orders", loginField.getText(), "");
-                editorFrame editor = new editorFrame();
+                editorFrame editor = new editorFrame(loginField.getText());
                 editor.setVisible(true);
                 setVisible(false);
             } catch (SQLException ex) {

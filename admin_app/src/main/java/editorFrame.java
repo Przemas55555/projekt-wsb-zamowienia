@@ -1,3 +1,14 @@
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -10,13 +21,54 @@
  */
 public class editorFrame extends javax.swing.JFrame {
 
+    private String m_login = null;
+
     /**
      * Creates new form editorFrame
      */
+    public editorFrame(String p_login) {
+        initComponents();
+        this.m_login = p_login;
+//        showUsers();
+    }
+    
     public editorFrame() {
         initComponents();
     }
-
+    
+    public ArrayList<item> itemsList() {
+        ArrayList<item> itemsList = new ArrayList<>();          
+        try {
+            m_connection = DriverManager.getConnection("jdbc:mysql://localhost/orders", m_login, "");
+            String query = "SELECT * FROM products";
+            Statement statement = m_connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+            item l_item;
+            while(resultSet.next()) {
+                l_item = new item(resultSet.getInt("id"), resultSet.getString("name"),
+                                  resultSet.getInt("price_nett"), resultSet.getInt("price_gross"),
+                                  resultSet.getInt("amount"));
+                itemsList.add(l_item);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(loginFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return itemsList;
+    }
+    
+    public void showUsers() {
+        ArrayList<item> l_list = itemsList();
+        DefaultTableModel l_model = (DefaultTableModel) itemsTable.getModel();
+        Object[] row = new Object[5];
+        for (int i = 0; i < l_list.size(); i++) {
+            row[0] = l_list.get(i).getId();
+            row[1] = l_list.get(i).getName();
+            row[2] = l_list.get(i).getPriceNetto();
+            row[3] = l_list.get(i).getPriceGross();
+            row[4] = l_list.get(i).getAmount();
+            l_model.addRow(row);
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -31,6 +83,8 @@ public class editorFrame extends javax.swing.JFrame {
         newItemPriceGross = new javax.swing.JTextField();
         newItemAmountField = new javax.swing.JTextField();
         newItemAddButton = new javax.swing.JToggleButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        itemsTable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -49,6 +103,19 @@ public class editorFrame extends javax.swing.JFrame {
             }
         });
 
+        itemsTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Id", "Name", "Price netto", "Price gross", "Amount"
+            }
+        ));
+        jScrollPane1.setViewportView(itemsTable);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -56,15 +123,17 @@ public class editorFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(newItemAddButton)
                     .addComponent(newItemAmountField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(newItemPriceGross, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(newItemNameField)
+                        .addComponent(newItemPriceNettoField, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(newItemNameField)
-                            .addComponent(newItemPriceNettoField, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(newItemPriceGross, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(602, Short.MAX_VALUE))
+                        .addGap(36, 36, 36)
+                        .addComponent(newItemAddButton)))
+                .addGap(79, 79, 79)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(199, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -72,14 +141,18 @@ public class editorFrame extends javax.swing.JFrame {
                 .addGap(19, 19, 19)
                 .addComponent(newItemNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(newItemPriceNettoField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(newItemPriceGross, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(newItemPriceNettoField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addComponent(newItemPriceGross, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(13, 13, 13)
                 .addComponent(newItemAmountField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
+                .addGap(18, 18, 18)
                 .addComponent(newItemAddButton)
-                .addContainerGap(150, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(19, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -124,7 +197,10 @@ public class editorFrame extends javax.swing.JFrame {
         });
     }
 
+    Connection m_connection = null;
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable itemsTable;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JToggleButton newItemAddButton;
     private javax.swing.JTextField newItemAmountField;
     private javax.swing.JTextField newItemNameField;
