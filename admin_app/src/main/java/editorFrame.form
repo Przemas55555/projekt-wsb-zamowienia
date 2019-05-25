@@ -76,12 +76,16 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Name"/>
       </Properties>
+      <Events>
+        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="newItemNameFieldFocusGained"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="newItemPriceNettoField">
       <Properties>
         <Property name="text" type="java.lang.String" value="Price netto"/>
       </Properties>
       <Events>
+        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="newItemPriceNettoFieldFocusGained"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newItemPriceNettoFieldActionPerformed"/>
       </Events>
     </Component>
@@ -89,11 +93,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Price gross"/>
       </Properties>
+      <Events>
+        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="newItemPriceGrossFieldFocusGained"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="newItemAmountField">
       <Properties>
         <Property name="text" type="java.lang.String" value="Amount"/>
       </Properties>
+      <Events>
+        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="newItemAmountFieldFocusGained"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JToggleButton" name="newItemAddButton">
       <Properties>
@@ -161,6 +171,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Id"/>
       </Properties>
+      <Events>
+        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="newItemIdFieldFocusGained"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

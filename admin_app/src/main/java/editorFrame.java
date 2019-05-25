@@ -97,8 +97,18 @@ public class editorFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         newItemNameField.setText("Name");
+        newItemNameField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                newItemNameFieldFocusGained(evt);
+            }
+        });
 
         newItemPriceNettoField.setText("Price netto");
+        newItemPriceNettoField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                newItemPriceNettoFieldFocusGained(evt);
+            }
+        });
         newItemPriceNettoField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 newItemPriceNettoFieldActionPerformed(evt);
@@ -106,8 +116,18 @@ public class editorFrame extends javax.swing.JFrame {
         });
 
         newItemPriceGrossField.setText("Price gross");
+        newItemPriceGrossField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                newItemPriceGrossFieldFocusGained(evt);
+            }
+        });
 
         newItemAmountField.setText("Amount");
+        newItemAmountField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                newItemAmountFieldFocusGained(evt);
+            }
+        });
 
         newItemAddButton.setText("Add");
         newItemAddButton.addActionListener(new java.awt.event.ActionListener() {
@@ -130,6 +150,11 @@ public class editorFrame extends javax.swing.JFrame {
         jScrollPane1.setViewportView(itemsTable);
 
         newItemIdField.setText("Id");
+        newItemIdField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                newItemIdFieldFocusGained(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -189,6 +214,11 @@ public class editorFrame extends javax.swing.JFrame {
             statement.executeUpdate();
             JOptionPane.showMessageDialog(null, "Inserted successfully");
             showUsers();
+            newItemIdField.setText("Id");
+            newItemNameField.setText("Name");
+            newItemPriceNettoField.setText("Price netto");
+            newItemPriceGrossField.setText("Price gross");
+            newItemAmountField.setText("Amount");
         } catch (SQLException ex) {
             Logger.getLogger(editorFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -198,6 +228,26 @@ public class editorFrame extends javax.swing.JFrame {
     private void newItemPriceNettoFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newItemPriceNettoFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_newItemPriceNettoFieldActionPerformed
+
+    private void newItemIdFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_newItemIdFieldFocusGained
+        newItemIdField.setText(null);
+    }//GEN-LAST:event_newItemIdFieldFocusGained
+
+    private void newItemNameFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_newItemNameFieldFocusGained
+        newItemNameField.setText(null);
+    }//GEN-LAST:event_newItemNameFieldFocusGained
+
+    private void newItemPriceNettoFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_newItemPriceNettoFieldFocusGained
+        newItemPriceNettoField.setText(null);
+    }//GEN-LAST:event_newItemPriceNettoFieldFocusGained
+
+    private void newItemPriceGrossFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_newItemPriceGrossFieldFocusGained
+        newItemPriceGrossField.setText(null);
+    }//GEN-LAST:event_newItemPriceGrossFieldFocusGained
+
+    private void newItemAmountFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_newItemAmountFieldFocusGained
+        newItemAmountField.setText(null);
+    }//GEN-LAST:event_newItemAmountFieldFocusGained
 
     /**
      * @param args the command line arguments
