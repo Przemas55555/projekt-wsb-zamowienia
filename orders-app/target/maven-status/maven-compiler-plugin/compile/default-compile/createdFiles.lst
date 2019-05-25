@@ -1,4 +1,5 @@
 com\pk\ordersapp\spring\config\MyWebAppInitializer.class
+com\pk\ordersapp\spring\config\WebSecurityConfig.class
 com\pk\ordersapp\spring\config\AppConfig.class
 com\pk\ordersapp\spring\controller\ProductController.class
 com\pk\ordersapp\spring\service\ProductServiceImp.class

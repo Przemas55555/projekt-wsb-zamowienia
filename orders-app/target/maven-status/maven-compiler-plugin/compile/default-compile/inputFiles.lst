@@ -2,6 +2,7 @@ C:\xampp\htdocs\projekt-wsb-zamowienia\orders-app\src\main\java\com\pk\ordersapp
 C:\xampp\htdocs\projekt-wsb-zamowienia\orders-app\src\main\java\com\pk\ordersapp\spring\config\AppConfig.java
 C:\xampp\htdocs\projekt-wsb-zamowienia\orders-app\src\main\java\com\pk\ordersapp\spring\model\Product.java
 C:\xampp\htdocs\projekt-wsb-zamowienia\orders-app\src\main\java\com\pk\ordersapp\spring\service\ProductService.java
+C:\xampp\htdocs\projekt-wsb-zamowienia\orders-app\src\main\java\com\pk\ordersapp\spring\config\WebSecurityConfig.java
 C:\xampp\htdocs\projekt-wsb-zamowienia\orders-app\src\main\java\com\pk\ordersapp\spring\controller\ProductController.java
 C:\xampp\htdocs\projekt-wsb-zamowienia\orders-app\src\main\java\com\pk\ordersapp\spring\config\WebConfig.java
 C:\xampp\htdocs\projekt-wsb-zamowienia\orders-app\src\main\java\com\pk\ordersapp\spring\service\ProductServiceImp.java
