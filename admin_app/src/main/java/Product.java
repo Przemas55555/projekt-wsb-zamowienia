@@ -1,18 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author 30Luty
- */
-class item {
+class Product {
     private int id, price_netto, price_gross, amount;
     private String name;
     
-    public item(int id, String name, int price_netto, int price_gross, int amount) {
+    public Product(int id, String name, int price_netto, int price_gross, int amount) {
         this.id = id;
         this.name = name;
         this.price_netto = price_netto;
