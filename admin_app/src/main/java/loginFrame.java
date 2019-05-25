@@ -53,6 +53,11 @@ public class loginFrame extends javax.swing.JFrame {
                 passwordFieldFocusGained(evt);
             }
         });
+        passwordField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                passwordFieldActionPerformed(evt);
+            }
+        });
 
         loginButton.setText("Login");
         loginButton.addActionListener(new java.awt.event.ActionListener() {
@@ -97,7 +102,8 @@ public class loginFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
+    private void loginAndDisplayEditor()
+    {
         if(passwordField.getText().equals(password)) {
             try {
                 m_connection = DriverManager.getConnection("jdbc:mysql://localhost/orders", loginField.getText(), "");
@@ -111,11 +117,18 @@ public class loginFrame extends javax.swing.JFrame {
         else {
             JOptionPane.showMessageDialog(null, "Invalid username or password", "Access Denied", JOptionPane.ERROR_MESSAGE);
         }
+    }
+    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
+        loginAndDisplayEditor();
     }//GEN-LAST:event_loginButtonActionPerformed
 
     private void passwordFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passwordFieldFocusGained
         passwordField.setText(null);
     }//GEN-LAST:event_passwordFieldFocusGained
+
+    private void passwordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordFieldActionPerformed
+        loginAndDisplayEditor();
+    }//GEN-LAST:event_passwordFieldActionPerformed
 
     /**
      * @param args the command line arguments
