@@ -5,15 +5,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity(name = "Product")
+@Entity(name = "Products")
 public class Product {
 
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
    private Long id;
    private String name;
-   private Integer priceNett;
-   private Integer priceGross;
+   private Integer price_nett;
+   private Integer price_gross;
 
    public Long getId() {
       return id;
@@ -32,18 +32,18 @@ public class Product {
    }
 
    public Integer getPriceNett() {
-      return priceNett;
+      return price_nett;
    }
 
    public void setPriceNett(Integer priceNett) {
-      this.priceNett = priceNett;
+      this.price_nett = priceNett;
    }
 
    public Integer getPriceGross() {
-      return priceGross;
+      return price_gross;
    }
 
    public void setPriceGross(Integer priceGross) {
-      this.priceGross = priceGross;
+      this.price_gross = priceGross;
    }
 }
