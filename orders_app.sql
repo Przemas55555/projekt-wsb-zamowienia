@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 12 Maj 2019, 15:10
--- Wersja serwera: 10.1.35-MariaDB
--- Wersja PHP: 7.2.9
+-- Czas generowania: 25 Maj 2019, 23:45
+-- Wersja serwera: 10.1.40-MariaDB
+-- Wersja PHP: 7.3.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Baza danych: `orders_app`
+-- Baza danych: `orders`
 --
 
 -- --------------------------------------------------------
@@ -58,15 +58,17 @@ CREATE TABLE `products` (
   `id` int(11) NOT NULL,
   `name` varchar(100) COLLATE utf8_bin NOT NULL,
   `price_nett` int(11) NOT NULL,
-  `price_gross` int(11) NOT NULL
+  `price_gross` int(11) NOT NULL,
+  `amount` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Zrzut danych tabeli `products`
 --
 
-INSERT INTO `products` (`id`, `name`, `price_nett`, `price_gross`) VALUES
-(2, 'Klawiatura', 100, 123);
+INSERT INTO `products` (`id`, `name`, `price_nett`, `price_gross`, `amount`) VALUES
+(1, 'Klawiatura', 100, 123, 10),
+(2, 'Monitor', 1000, 1230, 21);
 
 --
 -- Indeksy dla zrzutów tabel
@@ -112,7 +114,7 @@ ALTER TABLE `order_lines`
 -- AUTO_INCREMENT dla tabeli `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- Ograniczenia dla zrzutów tabel
