@@ -2,8 +2,10 @@
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -91,10 +93,16 @@ public class loginFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
-        try {
-            m_connection = DriverManager.getConnection("jdbc:mysql://localhost/orders", "root", "");
-        } catch (SQLException ex) {
-            Logger.getLogger(loginFrame.class.getName()).log(Level.SEVERE, null, ex);
+        if(passwordField.getText().equals(password)) {
+            try {
+                m_connection = DriverManager.getConnection("jdbc:mysql://localhost/orders", loginField.getText(), "");
+                System.out.println("Connected");
+            } catch (SQLException ex) {
+                Logger.getLogger(loginFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Invalid username or password", "Access Denied", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_loginButtonActionPerformed
 
@@ -133,6 +141,7 @@ public class loginFrame extends javax.swing.JFrame {
         });
     }
 
+    String password = "123";
     Connection m_connection = null;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
