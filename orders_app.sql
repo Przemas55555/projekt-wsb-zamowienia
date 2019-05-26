@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 26 Maj 2019, 13:39
+-- Czas generowania: 26 Maj 2019, 13:49
 -- Wersja serwera: 10.1.40-MariaDB
 -- Wersja PHP: 7.3.5
 
@@ -41,7 +41,7 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `destination_city`, `destination_post_code`, `destination_street`, `Status`) VALUES
-(1, 'Wroclaw', '51-504', 'Marca polo 92', 1);
+(1, 'Wroclaw', '51-504', 'Marca polo 92', 0);
 
 -- --------------------------------------------------------
 
@@ -76,8 +76,7 @@ CREATE TABLE `products` (
 
 INSERT INTO `products` (`id`, `name`, `price_nett`, `price_gross`, `amount`) VALUES
 (1, 'Klawiatura', 100, 123, 10),
-(2, 'Monitor', 100, 123, 124),
-(3, 'dupa', 234, 234, 23);
+(2, 'Monitor', 100, 123, 11);
 
 --
 -- Indeksy dla zrzutów tabel
@@ -123,7 +122,7 @@ ALTER TABLE `order_lines`
 -- AUTO_INCREMENT dla tabeli `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Ograniczenia dla zrzutów tabel
