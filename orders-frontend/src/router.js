@@ -4,6 +4,7 @@ import StaterHeader from "./layout/starter/StarterHeader";
 import StarterFooter from "./layout/starter/StarterFooter";
 import Products from "./views/Products";
 import Orders from "./views/Orders"
+import Landing from "./views/Landing"
 
 Vue.use(Router);
 
@@ -15,7 +16,7 @@ export default new Router({
             name: "homepage",
             components: {
                 header: StaterHeader,
-                default: Products,
+                default: Landing,
                 footer: StarterFooter
             },
 

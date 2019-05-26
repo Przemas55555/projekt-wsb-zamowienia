@@ -30,6 +30,7 @@ public class AppConfig {
 
       Properties props = new Properties();
       // Setting JDBC properties
+      props.put("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
       props.put(DRIVER, env.getProperty("mysql.driver"));
       props.put(URL, env.getProperty("mysql.url"));
       props.put(USER, env.getProperty("mysql.user"));

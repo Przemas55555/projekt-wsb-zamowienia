@@ -12,7 +12,7 @@ public class Order {
     private String destination_post_code;
     private String destination_street;
 
-    @OneToMany(mappedBy = "order", targetEntity = OrderLine.class)
+    @OneToMany(mappedBy = "order", targetEntity = OrderLine.class, cascade = {CascadeType.ALL}, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<OrderLine> orderLines;
 
     public Long getId() {
@@ -45,5 +45,16 @@ public class Order {
 
     public void setDestinationStreet(String destination_street) {
         this.destination_street = destination_street;
+    }
+
+    public List<OrderLine> getOrderLines() {
+        return orderLines;
+    }
+
+    public void setOrderLines(List<OrderLine> orderLines) {
+        for (OrderLine orderLine: orderLines) {
+            orderLine.setOrder(this);
+        }
+        this.orderLines = orderLines;
     }
 }

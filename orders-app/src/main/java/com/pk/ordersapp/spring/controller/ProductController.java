@@ -15,6 +15,7 @@ public class ProductController {
    private ProductService productService;
 
    /*---Add new product---*/
+   @CrossOrigin(origins = "http://localhost:8081")
    @PostMapping("/product")
    public ResponseEntity<?> save(@RequestBody Product product) {
       long id = productService.save(product);
@@ -22,6 +23,7 @@ public class ProductController {
    }
 
    /*---Get a product by id---*/
+   @CrossOrigin(origins = "http://localhost:8081")
    @GetMapping("/product/{id}")
    public ResponseEntity<Product> get(@PathVariable("id") long id) {
       Product product = productService.get(id);
@@ -37,6 +39,7 @@ public class ProductController {
    }
 
    /*---Update a product by id---*/
+   @CrossOrigin(origins = "http://localhost:8081")
    @PutMapping("/product/{id}")
    public ResponseEntity<?> update(@PathVariable("id") long id, @RequestBody Product product) {
       productService.update(id, product);
@@ -44,6 +47,7 @@ public class ProductController {
    }
 
    /*---Delete a product by id---*/
+   @CrossOrigin(origins = "http://localhost:8081")
    @DeleteMapping("/product/{id}")
    public ResponseEntity<?> delete(@PathVariable("id") long id) {
       productService.delete(id);

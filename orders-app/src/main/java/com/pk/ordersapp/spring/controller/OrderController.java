@@ -15,6 +15,7 @@ public class OrderController {
    private OrderService orderService;
 
    /*---Add new order---*/
+   @CrossOrigin(origins = "http://localhost:8081")
    @PostMapping("/order")
    public ResponseEntity<?> save(@RequestBody Order order) {
       long id = orderService.save(order);
@@ -22,6 +23,7 @@ public class OrderController {
    }
 
    /*---Get a order by id---*/
+   @CrossOrigin(origins = "http://localhost:8081")
    @GetMapping("/order/{id}")
    public ResponseEntity<Order> get(@PathVariable("id") long id) {
       Order order = orderService.get(id);
@@ -37,6 +39,7 @@ public class OrderController {
    }
 
    /*---Update a order by id---*/
+   @CrossOrigin(origins = "http://localhost:8081")
    @PutMapping("/order/{id}")
    public ResponseEntity<?> update(@PathVariable("id") long id, @RequestBody Order order) {
       orderService.update(id, order);
@@ -44,6 +47,7 @@ public class OrderController {
    }
 
    /*---Delete a order by id---*/
+   @CrossOrigin(origins = "http://localhost:8081")
    @DeleteMapping("/order/{id}")
    public ResponseEntity<?> delete(@PathVariable("id") long id) {
       orderService.delete(id);

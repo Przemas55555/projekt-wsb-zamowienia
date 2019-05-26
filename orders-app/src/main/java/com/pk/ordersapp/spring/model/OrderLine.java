@@ -1,5 +1,7 @@
 package com.pk.ordersapp.spring.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 
 @Entity(name = "Order_lines")
@@ -10,10 +12,11 @@ public class OrderLine {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name="order_id")
+    @JoinColumn(name="order_id", referencedColumnName = "id", nullable = true)
+    @JsonBackReference
     private Order order;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
     @JoinColumn(name="product_id")
     private Product product;
 
