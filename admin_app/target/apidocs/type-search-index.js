@@ -1,1 +1,0 @@
-typeSearchIndex = [{"p":"<Unnamed>","l":"EditorFrame"},{"p":"<Unnamed>","l":"LoginFrame"}]
