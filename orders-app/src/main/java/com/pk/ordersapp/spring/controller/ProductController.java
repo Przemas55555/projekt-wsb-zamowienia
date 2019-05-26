@@ -15,11 +15,11 @@ public class ProductController {
    private ProductService productService;
 
    /*---Add new product---*/
-//   @PostMapping("/product")
-//   public ResponseEntity<?> save(@RequestBody Product product) {
-//      long id = productService.save(product);
-//      return ResponseEntity.ok().body("New Product has been saved with ID:" + id);
-//   }
+   @PostMapping("/product")
+   public ResponseEntity<?> save(@RequestBody Product product) {
+      long id = productService.save(product);
+      return ResponseEntity.ok().body("New Product has been saved with ID:" + id);
+   }
 
    /*---Get a product by id---*/
    @GetMapping("/product/{id}")

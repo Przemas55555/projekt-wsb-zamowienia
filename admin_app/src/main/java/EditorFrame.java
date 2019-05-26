@@ -11,13 +11,13 @@ import javax.swing.table.DefaultTableModel;
 
 public class EditorFrame extends javax.swing.JFrame {
 
-    private String login = null;
+    private String login = "root";
 
     public EditorFrame(String login) {
         initComponents();
         this.login = login;
         try {
-        connection = DriverManager.getConnection("jdbc:mysql://localhost/orders", this.login, "");
+        connection = DriverManager.getConnection("jdbc:mysql://localhost/zamowienia", this.login, "");
         } catch(SQLException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
         }
