@@ -331,14 +331,15 @@ public class EditorFrame extends javax.swing.JFrame {
             statement.setInt(4, Integer.parseInt(newItemPriceGrossField.getText()));
             statement.setInt(5, Integer.parseInt(newItemAmountField.getText()));
             statement.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Added successfully!");
             showProducts();
             newItemIdField.setText("Id");
             newItemNameField.setText("Name");
             newItemPriceNettoField.setText("Price netto");
             newItemPriceGrossField.setText("Price gross");
             newItemAmountField.setText("Amount");
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage());
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Some value is incorrect!");
         }
     }//GEN-LAST:event_newItemAddButtonActionPerformed
 
@@ -372,9 +373,10 @@ public class EditorFrame extends javax.swing.JFrame {
             String query = "DELETE FROM products where id="+value;
             PreparedStatement statement = connection.prepareStatement(query);
             statement.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Deleted successfully!");
             showProducts();
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage());
+            JOptionPane.showMessageDialog(null, "None item selected!");
         }
     }//GEN-LAST:event_deleteButtonActionPerformed
 
@@ -385,9 +387,10 @@ public class EditorFrame extends javax.swing.JFrame {
             String query = "UPDATE orders SET Status = 1 WHERE id="+value;
             PreparedStatement statement = connection.prepareStatement(query);
             statement.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Set as done successfully!");
             showOrders();
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage());
+            JOptionPane.showMessageDialog(null, "None item selected!");
         }
     }//GEN-LAST:event_setDoneButtonActionPerformed
 
@@ -406,9 +409,10 @@ public class EditorFrame extends javax.swing.JFrame {
                            " WHERE id ="+value;
             PreparedStatement statement = connection.prepareStatement(query);
             statement.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Modified successfully!");
             showProducts();
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Wrong modified value!");
         }
     }//GEN-LAST:event_modifyButtonActionPerformed
 
