@@ -9,5 +9,4 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @EnableWebMvc
 @ComponentScan(basePackages = { "com.pk.ordersapp.spring.controller" })
 public class WebConfig extends WebMvcConfigurerAdapter {
-
 }
