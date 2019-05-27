@@ -2,6 +2,7 @@ package com.pk.ordersapp.spring.service;
 
 import com.pk.ordersapp.spring.dao.OrderDao;
 import com.pk.ordersapp.spring.model.Order;
+import com.pk.ordersapp.spring.model.OrderLine;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,6 +19,9 @@ public class OrderServiceImp implements OrderService {
    @Transactional
    @Override
    public long save(Order order) {
+      for(OrderLine orderLine: order.getOrderLines()) {
+         orderLine.setOrder(order);
+      }
       return orderDao.save(order);
    }
 

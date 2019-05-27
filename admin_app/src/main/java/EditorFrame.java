@@ -17,7 +17,7 @@ public class EditorFrame extends javax.swing.JFrame {
         initComponents();
         this.login = login;
         try {
-        connection = DriverManager.getConnection("jdbc:mysql://localhost/orders", this.login, "");
+        connection = DriverManager.getConnection("jdbc:mysql://localhost/zamowienia", this.login, "");
         } catch(SQLException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
         }

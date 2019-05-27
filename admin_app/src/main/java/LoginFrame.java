@@ -82,19 +82,19 @@ public class LoginFrame extends javax.swing.JFrame {
 
     private void loginAndDisplayEditor()
     {
-        if(passwordField.getText().equals(password)) {
+//        if(passwordField.getText().equals(password)) {
             try {
-                connection = DriverManager.getConnection("jdbc:mysql://localhost/orders", loginField.getText(), "");
+                connection = DriverManager.getConnection("jdbc:mysql://localhost/zamowienia", loginField.getText(), "");
                 EditorFrame editor = new EditorFrame(loginField.getText());
                 editor.setVisible(true);
                 setVisible(false);
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, ex.getMessage());
             }
-        }
-        else {
-            JOptionPane.showMessageDialog(null, "Invalid username or password", "Access Denied", JOptionPane.ERROR_MESSAGE);
-        }
+//        }
+//        else {
+//            JOptionPane.showMessageDialog(null, "Invalid username or password", "Access Denied", JOptionPane.ERROR_MESSAGE);
+//        }
     }
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         loginAndDisplayEditor();
